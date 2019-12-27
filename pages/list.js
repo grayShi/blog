@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
-import '@pages/index.scss'
-import { Row, Col, List, Icon } from 'antd'
+import { Row, Col, List, Icon, Breadcrumb } from 'antd'
 import Header from '../components/Header'
 import Author from '../components/Author'
 import Advert from '../components/Advert'
 import Footer from '../components/Footer'
+import '@pages/list.scss'
 
-const Home = () => {
+const Mylist = () => {
   const [mylist, setMylist] = useState([
     {
       title: '50元加入小密圈 胖哥带你学一年',
@@ -34,12 +34,20 @@ const Home = () => {
   return (
     <div>
       <Head>
-        <title>Home</title>
+        <title>List</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
       <Row className="common-main" type="flex" justify="center">
         <Col className="common-left" xs={24} sm={24} md={16} lg={18} xl={14}>
+          <div className="breadcrumb-div">
+            <Breadcrumb>
+              <Breadcrumb.Item>
+                <a href="/">首页</a>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>视频教程</Breadcrumb.Item>
+            </Breadcrumb>
+          </div>
           <List
             header={<div>最新日志</div>}
             itemLayout="vertical"
@@ -76,4 +84,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Mylist
