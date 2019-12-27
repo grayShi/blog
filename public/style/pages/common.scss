@@ -44,6 +44,9 @@ html body {
 .list-icon span {
   display: inline-block;
   padding: 0 10px;
+  i {
+    margin-right: 5px;
+  }
 }
 
 .breadcrumb-div {

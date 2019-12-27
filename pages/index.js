@@ -50,15 +50,15 @@ const Home = () => {
                 <div className="list-icon">
                   <span>
                     <Icon type="calendar" />
-                    &nbsp;2019-06-28
+                    2019-06-28
                   </span>
                   <span>
                     <Icon type="folder" />
-                    &nbsp;视频教程
+                    视频教程
                   </span>
                   <span>
                     <Icon type="fire" />
-                    &nbsp;11人
+                    11人
                   </span>
                 </div>
                 <div className="list-context">{item.context}</div>
