@@ -21,8 +21,6 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   }
 
-  console.log(appInfo)
-
   // egg-mysql
   config.mysql = {
     // database configuration
@@ -34,7 +32,7 @@ module.exports = appInfo => {
       // username
       user: 'root',
       // password
-      password: 'shigaolei',
+      password: '1996@sgl',
       // database
       database: 'react-blog'
     },
