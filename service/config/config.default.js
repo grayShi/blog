@@ -34,12 +34,25 @@ module.exports = appInfo => {
       // password
       password: '1996@sgl',
       // database
-      database: 'react-blog'
+      database: 'react_blog'
     },
     // load into app, default is open
     app: true,
     // load into agent, default is close
     agent: false
+  }
+
+  // egg scrf默认安全机制 关闭
+  config.security = {
+    scrf: {
+      enable: false
+    },
+    domainWhiteList: ['*'] // 所有
+  }
+
+  config.cors = {
+    origin: '*', // 所有域名可以跨域访问
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS' // 允许哪些方法
   }
 
   return {

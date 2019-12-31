@@ -3,6 +3,7 @@
   "rules": {
     "semi": ["error", "never"],
     "strict": [2, "never"],
-    "comma-dangle": ["error", "never"]
+    "comma-dangle": ["error", "never"],
+    "array-bracket-spacing": ["error", "never"]
   }
 }
