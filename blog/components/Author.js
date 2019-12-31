@@ -10,9 +10,9 @@ const Author = () => {
       <div className="author-introduction">
         123123123123
         <Divider>社交账号</Divider>
-        <Avatar size={28} icon="github" className="account" />
-        <Avatar size={28} icon="qq" className="account" />
-        <Avatar size={28} icon="wechat" className="account" />
+        <Avatar size={28} icon="github" className="account-git" />
+        <Avatar size={28} icon="wechat" className="account-wechat" />
+        {/* <Avatar size={28} icon="wechat" className="account" /> */}
       </div>
     </div>
   )

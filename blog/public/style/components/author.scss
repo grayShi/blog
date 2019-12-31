@@ -1,3 +1,4 @@
+@import '../theme/params.scss';
 .author-div {
   text-align: center;
   padding: 1rem;
@@ -7,10 +8,21 @@
 }
 .author-introduction {
   font-size: 0.8rem;
-  color: #999;
+  color: $sub-main-text;
 }
-.account {
-  background-color: #999;
+@mixin account {
+  font-size: 28px !important;
+  background-color: #ffffff;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+}
+
+.account-git {
+  @include account;
+  color: black;
+}
+
+.account-wechat {
+  @include account;
+  color: #09bb07;
 }

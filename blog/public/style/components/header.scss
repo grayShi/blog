@@ -1,20 +1,20 @@
+@import '../theme/params.scss';
 .header {
   background-color: #ffffff;
   padding: 0.4rem;
   overflow: hidden;
-  height: 2.8rem;
   border-bottom: 1px solid #cccccc;
 }
 
 .header-logo {
-  color: #1e90ff;
+  color: $brand-color;
   font-size: 1.4rem;
   text-align: left;
 }
 
-.header-txt {
-  font-size: 0.6rem;
-  color: #999;
+.header-text {
+  font-size: 0.8rem;
+  color: $sub-main-text;
   display: inline-block;
   padding-left: 0.3rem;
 }
@@ -24,4 +24,11 @@
 .ant-menu-item {
   font-size: 0.8rem !important;
   padding: 0 1rem;
+  &-active {
+    border-bottom: 2px #ffffff solid !important;
+  }
+}
+
+.ant-menu-horizontal {
+  border-bottom: 0px;
 }

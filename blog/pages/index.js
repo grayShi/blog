@@ -34,14 +34,13 @@ const Home = list => {
   return (
     <div>
       <Head>
-        <title>Home</title>
+        <title>博客首页</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
       <Row className="common-main" type="flex" justify="center">
         <Col className="common-left" xs={24} sm={24} md={16} lg={18} xl={14}>
           <List
-            header={<div>最新日志</div>}
             itemLayout="vertical"
             dataSource={mylist}
             renderItem={item => (
