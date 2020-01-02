@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { Row, Col, List, Icon, Breadcrumb } from 'antd'
-import Header from '../components/Header'
 import Author from '../components/Author'
 import Advert from '../components/Advert'
-import Footer from '../components/Footer'
+import Container from '../components/container'
 import '@pages/list.scss'
 import axios from 'axios'
 import servicePath from '../config/apiUrl'
@@ -13,7 +12,7 @@ import marked from 'marked'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/monokai-sublime.css'
 
-const Mylist = list => {
+const MyList = list => {
   const renderer = new marked.Renderer()
 
   marked.setOptions({
@@ -29,21 +28,20 @@ const Mylist = list => {
     }
   })
 
-  const [mylist, setMylist] = useState(list.data)
+  const [myList, setMyList] = useState(list.data)
 
   useEffect(() => {
-    setMylist(list.data)
+    setMyList(list.data)
   })
 
   return (
-    <div>
+    <Container>
       <Head>
         <title>List</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
       <Row className="common-main" type="flex" justify="center">
-        <Col className="common-left" xs={24} sm={24} md={16} lg={18} xl={14}>
+        <Col className="common-col" xs={24} sm={24} md={16} lg={18} xl={14}>
           <div className="breadcrumb-div">
             <Breadcrumb>
               <Breadcrumb.Item>
@@ -53,11 +51,10 @@ const Mylist = list => {
             </Breadcrumb>
           </div>
           <List
-            header={<div>最新日志</div>}
             itemLayout="vertical"
-            dataSource={mylist}
+            dataSource={myList}
             renderItem={item => (
-              <List.Item>
+              <List.Item className="list-body">
                 <div className="list-title">
                   <Link href={{ pathname: 'detail', query: { id: item.id } }}>
                     <a>{item.title}</a>
@@ -85,17 +82,16 @@ const Mylist = list => {
             )}
           />
         </Col>
-        <Col xs={0} sm={0} md={7} lg={5} xl={4}>
+        <Col className="common-col" xs={0} sm={0} md={7} lg={5} xl={4}>
           <Author />
           <Advert />
         </Col>
       </Row>
-      <Footer />
-    </div>
+    </Container>
   )
 }
 
-Mylist.getInitialProps = async context => {
+MyList.getInitialProps = async context => {
   const typeId = context.query.typeId
 
   const promise = new Promise(resolve => {
@@ -106,4 +102,4 @@ Mylist.getInitialProps = async context => {
   return await promise
 }
 
-export default Mylist
+export default MyList

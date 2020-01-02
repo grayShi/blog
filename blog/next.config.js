@@ -1,6 +1,7 @@
 const withCss = require('@zeit/next-css')
 const withSass = require('@zeit/next-sass')
 const withPlugins = require('next-compose-plugins')
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin')
 const path = require('path')
 
 if (typeof require !== 'undefined') {
@@ -36,6 +37,14 @@ module.exports = withPlugins([withSass, withCss], {
       '/public/style/components'
     )
     config.resolve.alias['@pages'] = path.join(__dirname, '/public/style/pages')
+
+    // 隐藏warning: chunk styles [mini-css-extract-plugin]
+    // 父子组件重复引用antd,与内部按需加载冲突,非必须
+    config.plugins.push(
+      new FilterWarningsPlugin({
+        exclude: /mini-css-extract-plugin[^]*Conflicting order between:/
+      })
+    )
 
     return config
   }

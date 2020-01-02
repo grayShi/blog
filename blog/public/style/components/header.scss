@@ -24,7 +24,8 @@
 .ant-menu-item {
   font-size: 0.8rem !important;
   padding: 0 1rem;
-  &-active {
+  &-active,
+  &-selected {
     border-bottom: 2px #ffffff solid !important;
   }
 }
