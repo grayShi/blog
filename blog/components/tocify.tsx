@@ -77,7 +77,11 @@ export default class Tocify {
 
   render() {
     return (
-      <Anchor affix showInkInFixed>
+      <Anchor
+        affix
+        showInkInFixed
+        getContainer={() => document.getElementById('__page-container')}
+      >
         {this.renderToc(this.tocItems)}
       </Anchor>
     )

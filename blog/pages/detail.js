@@ -2,10 +2,9 @@ import React from 'react'
 import Head from 'next/head'
 import '@pages/detail.scss'
 import { Row, Col, Icon, Breadcrumb, Affix } from 'antd'
-import Header from '../components/Header'
 import Author from '../components/Author'
 import Advert from '../components/Advert'
-import Footer from '../components/Footer'
+import Container from '../components/container'
 import axios from 'axios'
 import marked from 'marked'
 import hljs from 'highlight.js'
@@ -38,14 +37,20 @@ const Detail = props => {
   let html = marked(props.articleContent)
 
   return (
-    <div>
+    <Container>
       <Head>
         <title>Detail</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
       <Row className="common-main" type="flex" justify="center">
-        <Col className="common-left" xs={24} sm={24} md={16} lg={18} xl={14}>
+        <Col
+          className="common-col content-box"
+          xs={24}
+          sm={24}
+          md={16}
+          lg={18}
+          xl={14}
+        >
           <div>
             <div className="breadcrumb-div">
               <Breadcrumb>
@@ -59,7 +64,7 @@ const Detail = props => {
               </Breadcrumb>
             </div>
             <div>
-              <div className="detailed-title">React实战标题</div>
+              <div className="detail-title">React实战标题</div>
               <div className="list-icon center">
                 <span>
                   <Icon type="calendar" />
@@ -75,25 +80,27 @@ const Detail = props => {
                 </span>
               </div>
               <div
-                className="detailed-content"
+                className="detail-content"
                 dangerouslySetInnerHTML={{ __html: html }}
               ></div>
             </div>
           </div>
         </Col>
-        <Col xs={0} sm={0} md={7} lg={5} xl={4}>
+        <Col className="common-col" xs={0} sm={0} md={7} lg={5} xl={4}>
           <Author />
           <Advert />
-          <Affix offsetTop={15}>
-            <div className="detailed-nav common-box">
+          <Affix
+            offsetTop={10}
+            target={() => document.getElementById('__page-container')}
+          >
+            <div className="detail-nav common-box">
               <div className="nav-title">文章目录</div>
               <div className="toc-list">{tocify && tocify.render()}</div>
             </div>
           </Affix>
         </Col>
       </Row>
-      <Footer />
-    </div>
+    </Container>
   )
 }
 
