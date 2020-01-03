@@ -5,39 +5,24 @@ html body {
   background-color: $body-background-color;
 }
 
-#__next {
-  height: 100%;
-}
-
 .common-main {
-  margin: 0.5rem 0;
-  overflow: auto;
+  margin-top: 0.5rem;
 }
 
 @mixin common-body {
+  background-color: $common-background-color;
   padding: 0.3rem;
   border-radius: 0.3rem;
-  // border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 }
 
-.common-col {
+.common-left {
   @include common-body;
-}
-
-.ant-list-empty-text {
-  background-color: $common-background-color;
 }
 
 .common-box {
   margin-left: 0.5rem;
-  background-color: $common-background-color;
   @include common-body;
-}
-
-.list-body {
-  background-color: $common-background-color;
-  border-radius: 10px;
-  margin-bottom: 5px;
 }
 
 .list-title {

@@ -3,9 +3,10 @@ import axios from 'axios'
 import Head from 'next/head'
 import '@pages/index.scss'
 import { Row, Col, List, Icon } from 'antd'
+import Header from '../components/Header'
 import Author from '../components/Author'
 import Advert from '../components/Advert'
-import Container from '../components/container'
+import Footer from '../components/Footer'
 import Link from 'next/link'
 import servicePath from '../config/apiUrl'
 import marked from 'marked'
@@ -28,21 +29,22 @@ const Home = list => {
     }
   })
 
-  const [myList, setMyList] = useState(list.data)
+  const [mylist, setMylist] = useState(list.data)
 
   return (
-    <Container>
+    <div>
       <Head>
         <title>博客首页</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <Row className="common-main" type="flex" justify="center">
-        <Col className="common-col" xs={24} sm={24} md={16} lg={18} xl={14}>
+        <Col className="common-left" xs={24} sm={24} md={16} lg={18} xl={14}>
           <List
             itemLayout="vertical"
-            dataSource={myList}
+            dataSource={mylist}
             renderItem={item => (
-              <List.Item className="list-body">
+              <List.Item>
                 <div className="list-title">
                   <Link href={{ pathname: 'detail', query: { id: item.id } }}>
                     <a>{item.title}</a>
@@ -70,12 +72,13 @@ const Home = list => {
             )}
           />
         </Col>
-        <Col className="common-col" xs={0} sm={0} md={7} lg={5} xl={4}>
+        <Col xs={0} sm={0} md={7} lg={5} xl={4}>
           <Author />
           <Advert />
         </Col>
       </Row>
-    </Container>
+      <Footer />
+    </div>
   )
 }
 
