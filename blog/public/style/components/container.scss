@@ -1,3 +1,4 @@
+@import '../theme/params.scss';
 .page-body {
   height: 100%;
   display: flex;
@@ -5,6 +6,17 @@
 }
 
 .body-container {
-  transition: all 2s ease;
   overflow: auto;
+  flex: 1;
+}
+
+.ant-back-top {
+  bottom: 100px;
+  transition: transform 1s ease;
+  &:hover {
+    transform: scale(1.2);
+  }
+  .ant-back-top-content {
+    background-color: $brand-color;
+  }
 }

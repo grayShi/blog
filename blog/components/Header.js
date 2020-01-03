@@ -51,11 +51,11 @@ const Header = () => {
     <Affix offsetTop={0}>
       <div className="header">
         <Row type="flex" justify="center">
-          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+          <Col xs={12} sm={8} md={12} lg={12} xl={12}>
             <span className="header-logo">博客</span>
             <span className="header-text">前端开发个人博客</span>
           </Col>
-          <Col xs={24} sm={24} md={12} lg={8} xl={6}>
+          <Col xs={12} sm={16} md={12} lg={12} xl={8}>
             <Menu
               mode="horizontal"
               onClick={handleClick}
