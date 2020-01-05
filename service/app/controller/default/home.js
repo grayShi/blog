@@ -52,7 +52,12 @@ class HomeController extends Controller {
     FROM article LEFT JOIN type ON article.type_id = type.id
     WHERE article.type_id = ${typeId}`
 
-    this.ctx.body = { data: await this.app.mysql.query(sql) }
+    const type = `SELECT type_name as typeName from type where id = ${typeId}`
+
+    this.ctx.body = {
+      data: await this.app.mysql.query(sql),
+      type: await this.app.mysql.query(type)
+    }
   }
 }
 

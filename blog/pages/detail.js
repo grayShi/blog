@@ -11,6 +11,7 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/monokai-sublime.css'
 import Tocify from '../components/tocify.tsx'
 import servicePath from '../config/apiUrl'
+import Link from 'next/link'
 
 const Detail = props => {
   const tocify = new Tocify()
@@ -58,25 +59,29 @@ const Detail = props => {
                   <a href="/">首页</a>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                  <a href="/">视频列表</a>
+                  <Link
+                    href={{ pathname: 'list', query: { typeId: props.typeId } }}
+                  >
+                    <a>{props.typeName}</a>
+                  </Link>
                 </Breadcrumb.Item>
-                <Breadcrumb.Item>xxxxx</Breadcrumb.Item>
+                <Breadcrumb.Item>{props.title}</Breadcrumb.Item>
               </Breadcrumb>
             </div>
             <div>
-              <div className="detail-title">React实战标题</div>
+              <div className="detail-title">{props.title}</div>
               <div className="list-icon center">
                 <span>
                   <Icon type="calendar" />
-                  2019-06-28
+                  {props.addTime}
                 </span>
                 <span>
                   <Icon type="folder" />
-                  视频教程
+                  {props.typeName}
                 </span>
                 <span>
                   <Icon type="fire" />
-                  123人
+                  {props.viewCount}人
                 </span>
               </div>
               <div

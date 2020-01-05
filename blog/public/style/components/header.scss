@@ -21,15 +21,14 @@
 .ant-menu {
   line-height: 2.6rem;
 }
-.ant-menu-item {
-  font-size: 0.8rem !important;
-  padding: 0 1rem;
-  &-active,
-  &-selected {
-    border-bottom: 2px #ffffff solid !important;
-  }
-}
+// .ant-menu-item {
+//   font-size: 0.8rem !important;
+//   padding: 0 1rem;
+//   &-selected {
+//     border-bottom: 2px #ffffff solid !important;
+//   }
+// }
 
 .ant-menu-horizontal {
-  border-bottom: 0px;
+  border-bottom: 0;
 }

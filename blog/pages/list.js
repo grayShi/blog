@@ -28,10 +28,12 @@ const MyList = list => {
     }
   })
 
-  const [myList, setMyList] = useState(list.data)
+  const [myList, setMyList] = useState([])
+  const [myType, setMyType] = useState({})
 
   useEffect(() => {
     setMyList(list.data)
+    setMyType(list.type[0])
   })
 
   return (
@@ -47,7 +49,7 @@ const MyList = list => {
               <Breadcrumb.Item>
                 <a href="/">首页</a>
               </Breadcrumb.Item>
-              <Breadcrumb.Item>视频教程</Breadcrumb.Item>
+              <Breadcrumb.Item>{myType.typeName}</Breadcrumb.Item>
             </Breadcrumb>
           </div>
           <List
