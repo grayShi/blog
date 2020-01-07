@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import axios from 'axios'
 import Head from 'next/head'
 import '@pages/index.scss'
 import { Row, Col, List, Icon } from 'antd'
 import Author from '../components/Author'
-import Advert from '../components/Advert'
-import Container from '../components/container'
+import Figure from '../components/Figure'
 import Link from 'next/link'
 import servicePath from '../config/apiUrl'
 import marked from 'marked'
@@ -31,7 +30,7 @@ const Home = list => {
   const [myList, setMyList] = useState(list.data)
 
   return (
-    <Container>
+    <>
       <Head>
         <title>博客首页</title>
         <link rel="icon" href="/favicon.ico" />
@@ -72,10 +71,10 @@ const Home = list => {
         </Col>
         <Col className="common-col" xs={0} sm={0} md={7} lg={5} xl={4}>
           <Author />
-          <Advert />
+          <Figure />
         </Col>
       </Row>
-    </Container>
+    </>
   )
 }
 

@@ -30,6 +30,21 @@ module.exports = withPlugins([withSass, withCss], {
       })
     }
 
+    // 设置图片打包
+    config.module.rules.push({
+      test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            esModule: false,
+            name: '[name].[ext]',
+            limit: 10240
+          }
+        }
+      ]
+    })
+
     // 路径缩写
     config.resolve.alias['@'] = path.join(__dirname, '/public')
     config.resolve.alias['@components'] = path.join(

@@ -1,24 +1,33 @@
 import '@components/header.scss'
 import { Row, Col, Menu, Icon, Affix } from 'antd'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Router from 'next/router'
 import axios from 'axios'
 import servicePath from '../config/apiUrl'
+import {
+  PageContext,
+  SHOW_LOADING,
+  SET_LOADING,
+  HIDE_LOADING
+} from '../config/context'
 
 const Header = () => {
   const [navArray, setNavArray] = useState([])
+  const [currentPage, setCurrentPage] = useState('home')
+
+  const pageContext = useContext(PageContext)
 
   useEffect(() => {
+    pageContext.dispatchLoading(SHOW_LOADING)
     const fetchData = async () => {
       const result = await axios.get(servicePath.getTypeInfo).then(res => {
+        pageContext.dispatchLoading(HIDE_LOADING)
         return res.data.data
       })
       setNavArray(result)
     }
     fetchData()
   }, [])
-
-  const [currentPage, setCurrentPage] = useState('home')
 
   useEffect(() => {
     const pathname = window.location.pathname

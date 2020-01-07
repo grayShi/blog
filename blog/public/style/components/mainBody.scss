@@ -1,0 +1,41 @@
+@import '../theme/params.scss';
+.page-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.body-container {
+  overflow: auto;
+  flex: 1;
+}
+
+.ant-back-top {
+  bottom: 100px;
+  transition: transform 1s ease;
+  &:hover {
+    transform: scale(1.2);
+  }
+  .ant-back-top-content {
+    background-color: $brand-color;
+  }
+}
+
+.ant-spin-nested-loading {
+  height: 100%;
+  & > div > .ant-spin {
+    max-height: none;
+  }
+}
+
+.body-wrapper {
+  height: 600px;
+  position: absolute;
+  width: 100%;
+  top: 1000px;
+  background-attachment: fixed;
+  background-image: url('/img/body-wrapper.jpg');
+  background-size: 100%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}

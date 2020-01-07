@@ -2,15 +2,6 @@ import { Avatar, Divider } from 'antd'
 import '@components/author.scss'
 
 const Author = () => {
-  // const readFile = async () => {
-  //   const file = await fs.readFile('', (err ,data => {
-  //     if (err) throw err
-  //     return data
-  //   }))
-
-  //   console.log(file)
-  // }
-
   return (
     <div className="author-div common-box">
       <div>

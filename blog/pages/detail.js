@@ -3,8 +3,7 @@ import Head from 'next/head'
 import '@pages/detail.scss'
 import { Row, Col, Icon, Breadcrumb, Affix } from 'antd'
 import Author from '../components/Author'
-import Advert from '../components/Advert'
-import Container from '../components/container'
+import Figure from '../components/Figure'
 import axios from 'axios'
 import marked from 'marked'
 import hljs from 'highlight.js'
@@ -38,7 +37,7 @@ const Detail = props => {
   let html = marked(props.articleContent)
 
   return (
-    <Container>
+    <>
       <Head>
         <title>Detail</title>
         <link rel="icon" href="/favicon.ico" />
@@ -56,7 +55,9 @@ const Detail = props => {
             <div className="breadcrumb-div">
               <Breadcrumb>
                 <Breadcrumb.Item>
-                  <a href="/">首页</a>
+                  <Link href={{ pathname: 'index' }}>
+                    <a>首页</a>
+                  </Link>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
                   <Link
@@ -93,7 +94,7 @@ const Detail = props => {
         </Col>
         <Col className="common-col" xs={0} sm={0} md={7} lg={5} xl={4}>
           <Author />
-          <Advert />
+          <Figure />
           <Affix
             offsetTop={10}
             target={() => document.getElementById('__page-container')}
@@ -105,7 +106,7 @@ const Detail = props => {
           </Affix>
         </Col>
       </Row>
-    </Container>
+    </>
   )
 }
 
