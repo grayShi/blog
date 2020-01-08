@@ -1,5 +1,5 @@
 import '@components/header.less'
-import { Row, Col, Menu, Icon, Affix } from 'antd'
+import { Row, Col, Menu, Icon, Affix, Avatar } from 'antd'
 import React, { useState, useEffect, useContext } from 'react'
 import Router from 'next/router'
 import axios from 'axios'
@@ -49,15 +49,52 @@ const Header = ({ router }) => {
     }
   }
 
+  const [showAuthor, setShowAuthor] = useState(false)
+  const [firstShowAuthor, setFirstShowAuthor] = useState(true)
+
+  useEffect(() => {
+    const pageContainer = document.getElementById('__page-container')
+    function scrollFunc() {
+      const HeaderEle = document.getElementById('__header')
+      const AuthorEle = document.getElementById('__author-container')
+      let showHeight = 0
+      if (AuthorEle) {
+        showHeight =
+          AuthorEle.getBoundingClientRect().top -
+          HeaderEle.clientHeight +
+          AuthorEle.clientHeight
+      }
+      if (showHeight <= 0) {
+        setShowAuthor(true)
+        setFirstShowAuthor(false)
+      } else {
+        setShowAuthor(false)
+      }
+    }
+    if (pageContainer) {
+      pageContainer.addEventListener('scroll', scrollFunc)
+    } else {
+      setShowAuthor(true)
+      setFirstShowAuthor(false)
+    }
+    return () => {
+      if (pageContainer) {
+        pageContainer.removeEventListener('scroll', scrollFunc)
+      }
+    }
+  }, [])
+
   return (
     <Affix offsetTop={0}>
-      <div className="header">
+      <div className="header" id="__header">
         <Row type="flex" justify="center">
-          <Col xs={12} sm={8} md={12} lg={12} xl={12}>
-            <span className="header-logo">博客</span>
-            <span className="header-text">前端开发个人博客</span>
+          <Col xs={12} sm={12} md={11} lg={11} xl={13}>
+            <div className="header-title">
+              <span className="header-logo">博客</span>
+              <span className="header-text">前端开发个人博客</span>
+            </div>
           </Col>
-          <Col xs={12} sm={16} md={12} lg={12} xl={8}>
+          <Col xs={12} sm={10} md={10} lg={10} xl={6}>
             <Menu
               mode="horizontal"
               onClick={handleClick}
@@ -74,6 +111,15 @@ const Header = ({ router }) => {
                 </Menu.Item>
               ))}
             </Menu>
+          </Col>
+          <Col xs={0} sm={2} md={2} lg={2} xl={2} className="header-author">
+            <div
+              className={`${firstShowAuthor ? 'header-author-hide' : ''} ${
+                showAuthor ? 'author-slideInUp' : 'author-slideOutDown'
+              }`}
+            >
+              <Avatar size="large" src="/img/author.jpg" />
+            </div>
           </Col>
         </Row>
       </div>

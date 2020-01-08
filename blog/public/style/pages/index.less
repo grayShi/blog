@@ -1,4 +1,24 @@
 @import '../theme/markdown.less';
+@import '../theme/params.less';
+
+.list-body {
+  background-color: @common-background-color;
+  border-radius: 0.3rem;
+  margin-bottom: 5px;
+}
+
+.list-title {
+  font-size: 1.3rem;
+  color: #1e90ff;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.list-context {
+  color: #777;
+  padding: 0.5rem;
+}
 
 .list-context img {
   width: 100%;
@@ -7,4 +27,23 @@
   max-width: 1000px !important;
   display: block;
   margin: 8px auto;
+}
+
+.list-icon {
+  padding: 0.5rem 0;
+  color: #aaa;
+}
+
+.list-icon span {
+  display: inline-block;
+  padding: 0 10px;
+  i {
+    margin-right: 5px;
+  }
+}
+
+.list-align-top {
+  font-size: 1.3rem;
+  color: red;
+  margin-right: 0.5rem;
 }

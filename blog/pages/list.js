@@ -43,7 +43,7 @@ const MyList = list => {
       </Head>
       <Row className="common-main" type="flex" justify="center">
         <Col className="common-col" xs={24} sm={24} md={16} lg={18} xl={14}>
-          <div className="breadcrumb-div">
+          <div className="breadcrumb-body">
             <Breadcrumb>
               <Breadcrumb.Item>
                 <Link href={{ pathname: 'index' }}>

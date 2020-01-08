@@ -1,8 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import Head from 'next/head'
 import '@pages/index.less'
-import { Row, Col, List, Icon } from 'antd'
+import { Row, Col, List, Icon, Tag } from 'antd'
 import Author from '../components/Author'
 import Figure from '../components/Figure'
 import Link from 'next/link'
@@ -43,6 +43,7 @@ const Home = list => {
             renderItem={item => (
               <List.Item className="list-body">
                 <div className="list-title">
+                  <Tag color="red">置顶</Tag>
                   <Link href={{ pathname: 'detail', query: { id: item.id } }}>
                     <a>{item.title}</a>
                   </Link>

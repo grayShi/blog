@@ -61,6 +61,10 @@ export default class Tocify {
     return anchor
   }
 
+  size = () => {
+    return this.tocItems.length
+  }
+
   reset = () => {
     this.tocItems = []
     this.index = 0

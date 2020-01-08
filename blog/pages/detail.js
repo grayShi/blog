@@ -95,15 +95,19 @@ const Detail = props => {
         <Col className="common-col" xs={0} sm={0} md={7} lg={5} xl={4}>
           <Author />
           <Figure />
-          <Affix
-            offsetTop={10}
-            target={() => document.getElementById('__page-container')}
-          >
-            <div className="detail-nav common-box">
-              <div className="nav-title">文章目录</div>
-              <div className="toc-list">{tocify && tocify.render()}</div>
-            </div>
-          </Affix>
+          {tocify && tocify.size() > 0 ? (
+            <Affix
+              offsetTop={10}
+              target={() => document.getElementById('__page-container')}
+            >
+              <div className="detail-nav common-box">
+                <div className="nav-title">文章目录</div>
+                <div className="toc-list">{tocify.render()}</div>
+              </div>
+            </Affix>
+          ) : (
+            ''
+          )}
         </Col>
       </Row>
     </>

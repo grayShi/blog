@@ -1,5 +1,4 @@
-@body-background-color: #f6f6f6;
-@common-background-color: #ffffff;
+@import '../theme/params.less';
 
 html body {
   background-color: @body-background-color;
@@ -34,38 +33,10 @@ html body {
   .common-body;
 }
 
-.list-body {
-  background-color: @common-background-color;
-  border-radius: 0.3rem;
-  margin-bottom: 5px;
-}
-
-.list-title {
-  font-size: 1.3rem;
-  color: #1e90ff;
-  padding: 0 0.5rem;
-}
-
-.list-context {
-  color: #777;
-  padding: 0.5rem;
-}
-
-.list-icon {
-  padding: 0.5rem 0;
-  color: #aaa;
-}
-
-.list-icon span {
-  display: inline-block;
-  padding: 0 10px;
-  i {
-    margin-right: 5px;
-  }
-}
-
-.breadcrumb-div {
-  padding: 0.5rem;
-  border-bottom: 1px solid #eee;
-  background-color: #e1f0ff;
+img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
 }

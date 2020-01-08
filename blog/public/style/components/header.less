@@ -1,4 +1,5 @@
 @import '../theme/params.less';
+@header-line-height: 2rem;
 .header {
   background-color: #ffffff;
   padding: 0.4rem;
@@ -6,20 +7,26 @@
   border-bottom: 1px solid #cccccc;
 }
 
-.header-logo {
-  color: @brand-color;
-  font-size: 1.4rem;
-  text-align: left;
+.header-title {
+  line-height: @header-line-height;
+  height: @header-line-height;
+
+  .header-logo {
+    color: @brand-color;
+    font-size: 1.4rem;
+    text-align: left;
+  }
+
+  .header-text {
+    font-size: 0.8rem;
+    color: @sub-main-text;
+    display: inline-block;
+    padding-left: 0.3rem;
+  }
 }
 
-.header-text {
-  font-size: 0.8rem;
-  color: @sub-main-text;
-  display: inline-block;
-  padding-left: 0.3rem;
-}
 .ant-menu {
-  line-height: 2.6rem;
+  line-height: @header-line-height;
 }
 // .ant-menu-item {
 //   font-size: 0.8rem !important;
@@ -31,4 +38,80 @@
 
 .ant-menu-horizontal {
   border-bottom: 0;
+}
+
+.header-author {
+  overflow: hidden;
+  & > div {
+    line-height: @header-line-height;
+  }
+
+  .header-author-hide {
+    display: none;
+  }
+
+  .author-slideInUp {
+    -webkit-animation: slideInUp 0.8s ease;
+    animation: slideInUp 0.8s ease;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
+
+  .author-slideOutDown {
+    -webkit-animation: slideOutDown 0.8s ease;
+    animation: slideOutDown 0.8s ease;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
+}
+
+@-webkit-keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@-webkit-keyframes slideOutDown {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
 }

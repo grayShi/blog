@@ -4,7 +4,7 @@ import '@components/author.less'
 const Author = () => {
   return (
     <div className="author-div common-box">
-      <div>
+      <div id="__author-container">
         <Avatar size={100} src="/img/author.jpg" />
       </div>
       <div className="author-introduction">

@@ -1,5 +1,6 @@
 import App from 'next/app'
 import React from 'react'
+import Router from 'next/router'
 import Container from '../components/Container'
 // import 'antd/dist/antd.css'
 import '@pages/common.less'
@@ -13,6 +14,13 @@ class MyApp extends App {
     }
 
     return { pageProps }
+  }
+
+  componentDidMount() {
+    const { pathname } = Router
+    if (pathname == '/') {
+      Router.push('/index')
+    }
   }
 
   render() {
