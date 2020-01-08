@@ -1,8 +1,8 @@
-$body-background-color: #f6f6f6;
-$common-background-color: #ffffff;
+@body-background-color: #f6f6f6;
+@common-background-color: #ffffff;
 
 html body {
-  background-color: $body-background-color;
+  background-color: @body-background-color;
 }
 
 #__next {
@@ -14,28 +14,28 @@ html body {
   overflow: auto;
 }
 
-@mixin common-body {
+.common-body() {
   padding: 0.3rem;
   border-radius: 0.3rem;
   // border-bottom: 1px solid #eee;
 }
 
 .common-col {
-  @include common-body;
+  .common-body;
 }
 
 .ant-list-empty-text {
-  background-color: $common-background-color;
+  background-color: @common-background-color;
 }
 
 .common-box {
   margin-left: 0.5rem;
-  background-color: $common-background-color;
-  @include common-body;
+  background-color: @common-background-color;
+  .common-body;
 }
 
 .list-body {
-  background-color: $common-background-color;
+  background-color: @common-background-color;
   border-radius: 0.3rem;
   margin-bottom: 5px;
 }

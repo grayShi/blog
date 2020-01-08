@@ -1,4 +1,4 @@
-import '@components/footer.scss'
+import '@components/footer.less'
 import { Affix, Row, Col } from 'antd'
 
 const Footer = () => (

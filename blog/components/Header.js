@@ -1,17 +1,13 @@
-import '@components/header.scss'
+import '@components/header.less'
 import { Row, Col, Menu, Icon, Affix } from 'antd'
 import React, { useState, useEffect, useContext } from 'react'
 import Router from 'next/router'
 import axios from 'axios'
 import servicePath from '../config/apiUrl'
-import {
-  PageContext,
-  SHOW_LOADING,
-  SET_LOADING,
-  HIDE_LOADING
-} from '../config/context'
+import { PageContext, SHOW_LOADING, HIDE_LOADING } from '../config/context'
+import { withRouter } from 'next/router'
 
-const Header = () => {
+const Header = ({ router }) => {
   const [navArray, setNavArray] = useState([])
   const [currentPage, setCurrentPage] = useState('home')
 
@@ -30,23 +26,20 @@ const Header = () => {
   }, [])
 
   useEffect(() => {
-    const pathname = window.location.pathname
-    const search = window.location.search
-    const query = search.split('?')
+    const pathname = router.pathname
+    const query = router.query
     if (pathname === '/' || pathname === '/index') {
       setCurrentPage('home')
-    } else if (pathname === '/list' && query.length > 0) {
-      const queryList = query[1].split('&')
-      queryList.forEach(item => {
-        const [key, value] = item.split('=')
-        if (key === 'typeId') {
-          setCurrentPage(value)
-        }
-      })
+    } else if (
+      pathname === '/list' &&
+      Object.keys(query).length > 0 &&
+      query.typeId
+    ) {
+      setCurrentPage(query.typeId)
     } else {
       setCurrentPage('')
     }
-  })
+  }, [router.asPath])
 
   const handleClick = e => {
     if (e.key === 'home') {
@@ -88,4 +81,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default withRouter(Header)

@@ -11,14 +11,14 @@ import {
 } from '../config/context'
 
 import zhCN from 'antd/lib/locale/zh_CN'
-import '../public/style/components/mainBody.scss'
+import '../public/style/components/container.less'
 
-const MainBody = props => {
-  const handleRouteChangeStart = url => {
+const Container = props => {
+  const handleRouteChangeStart = () => {
     dispatchLoading(SET_LOADING)
   }
 
-  const handleRouteChangeEnd = url => {
+  const handleRouteChangeEnd = () => {
     dispatchLoading(HIDE_LOADING)
   }
 
@@ -64,4 +64,4 @@ const MainBody = props => {
   )
 }
 
-export default MainBody
+export default Container

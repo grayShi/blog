@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import '@pages/detail.scss'
+import '@pages/detail.less'
 import { Row, Col, Icon, Breadcrumb, Affix } from 'antd'
 import Author from '../components/Author'
 import Figure from '../components/Figure'

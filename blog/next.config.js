@@ -1,17 +1,31 @@
 const withCss = require('@zeit/next-css')
-const withSass = require('@zeit/next-sass')
+const withLess = require('@zeit/next-less')
+const lessToJS = require('less-vars-to-js')
 const withPlugins = require('next-compose-plugins')
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin')
 const path = require('path')
+const fs = require('fs')
 
 if (typeof require !== 'undefined') {
-  require.extensions['.css'] = file => {}
+  require.extensions['.less'] = file => {}
 }
 
-module.exports = withPlugins([withSass, withCss], {
+const themeVariables = lessToJS(
+  fs.readFileSync(
+    path.resolve(__dirname, './public/style/theme/antd-custom.less'),
+    'utf8'
+  )
+)
+
+module.exports = withPlugins([withCss, withLess], {
+  lessLoaderOptions: {
+    javascriptEnabled: true,
+    modifyVars: themeVariables,
+    localIdentName: '[local]___[hash:base64:5]'
+  },
   webpack: (config, { isServer }) => {
     if (isServer) {
-      const antStyles = /antd\/.*?\/style\/css.*?/
+      const antStyles = /antd\/.*?\/style.*?/
       const origExternals = [...config.externals]
       config.externals = [
         (context, request, callback) => {

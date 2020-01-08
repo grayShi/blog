@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import axios from 'axios'
 import Head from 'next/head'
-import '@pages/index.scss'
+import '@pages/index.less'
 import { Row, Col, List, Icon } from 'antd'
 import Author from '../components/Author'
 import Figure from '../components/Figure'

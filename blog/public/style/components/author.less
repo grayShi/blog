@@ -1,4 +1,4 @@
-@import '../theme/params.scss';
+@import '../theme/params.less';
 .author-div {
   text-align: center;
   padding: 1rem;
@@ -8,9 +8,9 @@
 }
 .author-introduction {
   font-size: 0.8rem;
-  color: $sub-main-text;
+  color: @sub-main-text;
 }
-@mixin account {
+.account() {
   font-size: 28px !important;
   background-color: #ffffff;
   margin-left: 0.5rem;
@@ -18,11 +18,11 @@
 }
 
 .account-git {
-  @include account;
+  .account;
   color: black;
 }
 
-.account-wechat {
-  @include account;
+.account-weChat {
+  .account;
   color: #09bb07;
 }

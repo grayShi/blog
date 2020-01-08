@@ -1,5 +1,5 @@
 import { Avatar, Divider } from 'antd'
-import '@components/author.scss'
+import '@components/author.less'
 
 const Author = () => {
   return (
@@ -11,8 +11,7 @@ const Author = () => {
         池鱼可爱多
         <Divider>社交账号</Divider>
         <Avatar size={28} icon="github" className="account-git" />
-        <Avatar size={28} icon="wechat" className="account-wechat" />
-        {/* <Avatar size={28} icon="wechat" className="account" /> */}
+        <Avatar size={28} icon="wechat" className="account-weChat" />
       </div>
     </div>
   )

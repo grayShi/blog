@@ -1,8 +1,8 @@
 import App from 'next/app'
 import React from 'react'
-import MainBody from '../components/MainBody'
+import Container from '../components/Container'
 // import 'antd/dist/antd.css'
-import '@pages/common.scss'
+import '@pages/common.less'
 
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
@@ -23,9 +23,9 @@ class MyApp extends App {
         {pageProps.statusCode === 404 ? (
           <Component {...pageProps} />
         ) : (
-          <MainBody>
+          <Container>
             <Component {...pageProps} />
-          </MainBody>
+          </Container>
         )}
       </>
     )

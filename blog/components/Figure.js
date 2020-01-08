@@ -1,4 +1,4 @@
-import '@components/figure.scss'
+import '@components/figure.less'
 
 const Figure = () => {
   return (
