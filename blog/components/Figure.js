@@ -6,13 +6,13 @@ const Figure = () => {
     <div className="figure-body common-box">
       <Carousel autoplay>
         <div>
-          <img src="/img/figure/figure_1.jpg" width="100%" />
+          <img src="/img/figure/figure_1.jpg" />
         </div>
         <div>
-          <img src="/img/figure/figure_2.jpg" width="100%" />
+          <img src="/img/figure/figure_2.jpg" />
         </div>
         <div>
-          <img src="/img/figure/figure_3.jpg" width="100%" />
+          <img src="/img/figure/figure_3.jpg" />
         </div>
       </Carousel>
     </div>

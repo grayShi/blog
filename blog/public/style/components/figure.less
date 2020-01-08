@@ -12,11 +12,15 @@
 // }
 
 .ant-carousel {
-  .slick-slide {
-    height: 200px;
-    line-height: 200px;
-    text-align: center;
-    overflow: hidden;
+  .slick-track {
+    display: flex;
+    align-items: center;
+    .slick-slide {
+      // @diff: 30px;
+      // height: calc(~'100% - @{diff}');
+      text-align: center;
+      overflow: hidden;
+    }
   }
   .slick-dots-bottom {
     bottom: 5px;

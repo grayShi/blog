@@ -52,7 +52,7 @@ const Detail = props => {
           xl={14}
         >
           <div>
-            <div className="breadcrumb-div">
+            <div className="breadcrumb-body">
               <Breadcrumb>
                 <Breadcrumb.Item>
                   <Link href={{ pathname: 'index' }}>
