@@ -57,7 +57,7 @@ const Container = props => {
               />
             </Spin>
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </PageContext.Provider>
     </ConfigProvider>

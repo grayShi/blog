@@ -1,0 +1,28 @@
+.login-body {
+  height: 100%;
+  background-image: url('/img/body-background.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.ant-spin-nested-loading {
+  height: 100%;
+  & > div > .ant-spin {
+    max-height: none;
+  }
+  .ant-spin-container {
+    height: 100%;
+    &:before {
+      display: inline-block;
+      height: 100%;
+      content: '';
+      vertical-align: middle;
+    }
+  }
+}
+
+.ant-card {
+  width: 360px;
+  margin-left: calc(50% - 180px);
+  display: inline-block;
+  vertical-align: middle;
+}
