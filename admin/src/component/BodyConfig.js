@@ -31,7 +31,16 @@ const BodyConfig = props => {
       return response
     },
     function(error) {
-      message.error(error.response.data.message || '操作失败')
+      try {
+        message.error(
+          error.response && error.response.data
+            ? error.response.data.message || '操作失败'
+            : error.message
+        )
+      } catch (e) {
+        console.log(error)
+        message.error('操作失败')
+      }
       return Promise.reject(error)
     }
   )

@@ -5,7 +5,7 @@ import { Row, Col, Input, Select, Button, DatePicker } from 'antd'
 import axios from 'axios'
 import servicePath from '../config/apiUrl'
 import moment from 'moment'
-import { onSuccess, onError } from '../config/common'
+import { onSuccess, onError, formatQuery } from '../config/common'
 const { Option } = Select
 const { TextArea } = Input
 
@@ -63,6 +63,8 @@ function AddArticle(props) {
 
   useEffect(() => {
     getTypeInfo()
+    const query = formatQuery(props.history.location.search)
+    setArticleId(query.id)
   }, [])
 
   const saveArticle = () => {
@@ -100,6 +102,7 @@ function AddArticle(props) {
         onSuccess('文章保存成功')
         setArticleId(res.data.data.id)
         props.history.push({
+          pathname: '/index',
           search: `?id=${res.data.data.id}`
         })
       } else {
