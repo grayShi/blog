@@ -22,15 +22,11 @@ const Container = () => {
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
           <Menu.Item key="1">
             <Icon type="pie-chart" />
-            <span>
-              <Link to="/index">添加文章</Link>
-            </span>
+            <span>添加文章</span>
           </Menu.Item>
           <Menu.Item key="2">
             <Icon type="desktop" />
-            <span>
-              <Link to="/index2">添加文章2</Link>
-            </span>
+            <span>添加文章2</span>
           </Menu.Item>
           <SubMenu
             key="sub1"
