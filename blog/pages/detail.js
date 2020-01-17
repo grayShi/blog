@@ -20,15 +20,15 @@ const Detail = props => {
     const anchor = tocify.add(text, level)
     return `<a id="${anchor}" href="#${anchor}" class="anchor-fix"><h${level}>${text}</h${level}></a>\n`
   }
-
   marked.setOptions({
     renderer,
     gfm: true, // 启动类似github
     pedantic: false, // 自动改正markdown写法
     sanitize: false, // 不忽略html标签
     tables: true, // github 表格
-    breaks: true, // github 换行符
-    smartlists: true, // 自动渲染列表
+    breaks: false, // github 换行符
+    smartLists: true, // 自动渲染列表
+    smartypants: false,
     highlight: code => {
       return hljs.highlightAuto(code).value
     }

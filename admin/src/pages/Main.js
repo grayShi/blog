@@ -6,16 +6,46 @@ import {
   Switch
 } from 'react-router-dom'
 import '../static/css/common.less'
-import Login from './Login'
-import Container from './Container'
+import MyRouter from '../router'
+import NotFound from '../pages/NotFound'
+
+import BodyConfig from '../component/BodyConfig'
 
 const Main = () => {
   return (
     <Router>
+      <BodyConfig />
       <Switch>
-        <Route exact path="/" render={() => <Redirect to="/login" push />} />
-        <Route path="/login/" exact component={Login}></Route>
-        <Route path="/index" exact component={Container}></Route>
+        <Redirect exact from="/" to="/login" />
+        {MyRouter.map((item, index) => {
+          return (
+            <Route
+              path={item.path}
+              key={index}
+              exact
+              render={props => {
+                if (!item.auth || localStorage.getItem('openId')) {
+                  return <item.component {...props} />
+                } else {
+                  return (
+                    <Redirect
+                      to={{
+                        pathname: '/login',
+                        state: {
+                          from: {
+                            pathname: props.location.pathname,
+                            search: props.location.search
+                          }
+                        }
+                      }}
+                    />
+                  )
+                }
+              }}
+            />
+          )
+        })}
+        <Route component={NotFound} />
       </Switch>
     </Router>
   )

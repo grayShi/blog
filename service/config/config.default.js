@@ -14,7 +14,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1577439016178_746'
 
   // add your middleware config here
-  config.middleware = []
+  config.middleware = ['basicMiddleware']
 
   // add your user config here
   const userConfig = {
@@ -42,17 +42,27 @@ module.exports = appInfo => {
     agent: false
   }
 
-  // egg scrf默认安全机制 关闭
+  // egg csrf默认安全机制 关闭
   config.security = {
-    scrf: {
+    csrf: {
       enable: false
     },
     domainWhiteList: ['*'] // 所有
   }
 
   config.cors = {
-    origin: '*', // 所有域名可以跨域访问
+    origin: 'http://localhost:3000', // 所有域名可以跨域访问
+    // origin: '*', // 所有域名可以跨域访问
+    credentials: true, // 允许cookie跨域
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS' // 允许哪些方法
+  }
+
+  config.session = {
+    key: 'SESSION_ID',
+    maxAge: 1000 * 60 * 30,
+    httpOnly: true,
+    encrypt: true, // 加密
+    renew: true // 最大时间范围内，刷新，自动增加最大时间
   }
 
   return {

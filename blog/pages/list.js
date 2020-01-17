@@ -12,16 +12,15 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/monokai-sublime.css'
 
 const MyList = list => {
-  const renderer = new marked.Renderer()
-
   marked.setOptions({
-    renderer,
+    renderer: new marked.Renderer(),
     gfm: true, // 启动类似github
     pedantic: false, // 自动改正markdown写法
     sanitize: false, // 不忽略html标签
     tables: true, // github 表格
-    breaks: true, // github 换行符
-    smartlists: true, // 自动渲染列表
+    breaks: false, // github 换行符
+    smartLists: true, // 自动渲染列表
+    smartypants: false,
     highlight: code => {
       return hljs.highlightAuto(code).value
     }
@@ -32,7 +31,7 @@ const MyList = list => {
 
   useEffect(() => {
     setMyList(list.data)
-    setMyType(list.type[0])
+    setMyType(list.type || {})
   }, [list.data, list.type])
 
   return (
@@ -50,7 +49,7 @@ const MyList = list => {
                   <a>首页</a>
                 </Link>
               </Breadcrumb.Item>
-              <Breadcrumb.Item>{myType.typeName}</Breadcrumb.Item>
+              <Breadcrumb.Item>{myType.type_name}</Breadcrumb.Item>
             </Breadcrumb>
           </div>
           <List
@@ -99,7 +98,7 @@ MyList.getInitialProps = async context => {
 
   const promise = new Promise(resolve => {
     axios.get(servicePath.getListByTypeId + typeId).then(res => {
-      resolve(res.data)
+      resolve(res.data.data)
     })
   })
   return await promise

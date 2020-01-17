@@ -12,16 +12,15 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/monokai-sublime.css'
 
 const Home = list => {
-  const renderer = new marked.Renderer()
-
   marked.setOptions({
-    renderer,
+    renderer: new marked.Renderer(),
     gfm: true, // 启动类似github
     pedantic: false, // 自动改正markdown写法
     sanitize: false, // 不忽略html标签
     tables: true, // github 表格
-    breaks: true, // github 换行符
-    smartlists: true, // 自动渲染列表
+    breaks: false, // github 换行符
+    smartLists: true, // 自动渲染列表
+    smartypants: false,
     highlight: code => {
       return hljs.highlightAuto(code).value
     }
