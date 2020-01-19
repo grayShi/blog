@@ -1,49 +1,64 @@
 import React, { useState } from 'react'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd'
 import '../static/css/container.less'
-import { Route, Link } from 'react-router-dom'
-import AddArticle from './AddArticle'
-import NotFound from './NotFound'
-
+import { Route } from 'react-router-dom'
+import {menuConfig, routerConfig} from '../config/menuConfig'
 const { Content, Footer, Sider } = Layout
 const { SubMenu } = Menu
 
-const Container = () => {
+
+const Container = (props) => {
   const [collapsed, setCollapsed] = useState(false)
 
   const onCollapse = collapsed => {
     setCollapsed(collapsed)
   }
 
+  const gotoNewPage = e => {
+    if (routerConfig[e.key]) {
+      props.history.push(routerConfig[e.key].path)
+    }
+  }
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
         <div className="logo" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-          <Menu.Item key="1">
-            <Icon type="pie-chart" />
-            <span>添加文章</span>
-          </Menu.Item>
-          <Menu.Item key="2">
-            <Icon type="desktop" />
-            <span>添加文章2</span>
-          </Menu.Item>
-          <SubMenu
-            key="sub1"
-            title={
-              <span>
-                <Icon type="user" />
-                <span>文章管理</span>
-              </span>
-            }
-          >
-            <Menu.Item key="3">Tom</Menu.Item>
-            <Menu.Item key="4">Bill</Menu.Item>
-          </SubMenu>
-          <Menu.Item key="5">
-            <Icon type="file" />
-            <span>留言管理</span>
-          </Menu.Item>
+        <Menu
+          theme="dark"
+          defaultSelectedKeys={['index']}
+          mode="inline"
+          onClick={gotoNewPage}
+        >
+
+          {
+            menuConfig.map(item => {
+              if (item.subMenu) {
+                return (
+                  <SubMenu
+                    key={item.key}
+                    title={
+                      <span>
+                        <Icon type={item.icon} />
+                        <span>{item.title}</span>
+                      </span>
+                    }
+                  >
+                    {
+                      item.subMenu.map(sub => <Menu.Item key={sub.key}>{sub.title}</Menu.Item>)
+                    }
+                  </SubMenu>
+                )
+              } else {
+                return (
+                  <Menu.Item key={item.key}>
+                    <Icon type={item.icon} />
+                    <span>{item.title}</span>
+                  </Menu.Item>
+                )
+              }
+            })
+          }
         </Menu>
       </Sider>
       <Layout>
@@ -53,8 +68,13 @@ const Container = () => {
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
           <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-            <Route path="/index/" exact component={AddArticle} />
-            <Route path="/index2/" exact component={NotFound} />
+            {
+              Object.keys(routerConfig).map(key =>{
+                const item = routerConfig[key]
+                console.log(item)
+                return <Route key={key} path={item.path} exact={item.exact} component={item.component} />
+              })
+            }
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>

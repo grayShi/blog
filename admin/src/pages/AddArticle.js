@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import marked from 'marked'
 import '../static/css/addArticle.less'
 import { Row, Col, Input, Select, Button, DatePicker } from 'antd'
@@ -61,11 +61,15 @@ function AddArticle(props) {
     })
   }
 
-  useEffect(() => {
+  const getArticleByQuery = useCallback(() => {
     getTypeInfo()
     const query = formatQuery(props.history.location.search)
     setArticleId(query.id)
-  }, [])
+  }, [props]);
+
+  useEffect(() => {
+    getArticleByQuery();
+  }, [getArticleByQuery]);
 
   const saveArticle = () => {
     if (!selectedType) {

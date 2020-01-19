@@ -12,7 +12,7 @@ export const formatQuery = search => {
   if (!search) {
     return {}
   }
-  const queryString = `${search}#`.match(/\?(\S*?)\#/)
+  const queryString = `${search}#`.match(/\?(\S*?)#/)
   if (queryString) {
     const queryArray = queryString[1].split('&')
     const query = {}

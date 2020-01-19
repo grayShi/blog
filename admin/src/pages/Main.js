@@ -22,7 +22,7 @@ const Main = () => {
             <Route
               path={item.path}
               key={index}
-              exact
+              exact={item.exact}
               render={props => {
                 if (!item.auth || localStorage.getItem('openId')) {
                   return <item.component {...props} />
