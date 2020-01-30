@@ -22,8 +22,7 @@ const Login = props => {
     axios({
       method: 'post',
       url: servicePath.login,
-      data: { userName, password },
-      withCredentials: true
+      data: { userName, password }
     }).then(res => {
       setIsLoading(false)
       if (res.data.success) {
@@ -83,6 +82,7 @@ const Login = props => {
           <Button type="primary" size="large" block onClick={loginSystem}>
             登录
           </Button>
+          <br />
         </Card>
       </Spin>
     </div>

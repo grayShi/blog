@@ -8,7 +8,6 @@ class MainController extends Controller {
     const result = await this.app.mysql.query(sql)
     if (result.length > 0) {
       const openId = new Date().getTime()
-      console.log(this.ctx.session.maxAge)
       this.ctx.session.openId = openId
       this.ctx.body = success({ openId })
     } else {

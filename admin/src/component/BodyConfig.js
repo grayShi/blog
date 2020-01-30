@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom'
 import { message } from 'antd'
 import axios from 'axios'
 
+axios.defaults.withCredentials = true
+
 const BodyConfig = props => {
   axios.interceptors.request.use(
     function(config) {
@@ -31,17 +33,20 @@ const BodyConfig = props => {
       return response
     },
     function(error) {
-      try {
-        message.error(
-          error.response && error.response.data
-            ? error.response.data.message || '操作失败'
-            : error.message
-        )
-      } catch (e) {
-        console.log(error)
-        message.error('操作失败')
+      if (Object.keys(error).length !== 0) {
+        try {
+          message.error(
+            error.response && error.response.data
+              ? error.response.data.message || '操作失败'
+              : error.message
+          )
+        } catch (e) {
+          console.log(error)
+          message.error('操作失败')
+        }
+        return Promise.reject(error)
       }
-      return Promise.reject(error)
+      return Promise.reject({})
     }
   )
   return <></>

@@ -48,8 +48,7 @@ function AddArticle(props) {
   const getTypeInfo = () => {
     axios({
       method: 'get',
-      url: servicePath.getTypeInfo,
-      withCredentials: true
+      url: servicePath.getTypeInfo
     }).then(res => {
       if (res.data.success) {
         setTypeInfo(
@@ -65,11 +64,11 @@ function AddArticle(props) {
     getTypeInfo()
     const query = formatQuery(props.history.location.search)
     setArticleId(query.id)
-  }, [props]);
+  }, [props])
 
   useEffect(() => {
-    getArticleByQuery();
-  }, [getArticleByQuery]);
+    getArticleByQuery()
+  }, [getArticleByQuery])
 
   const saveArticle = () => {
     if (!selectedType) {
@@ -99,8 +98,7 @@ function AddArticle(props) {
     axios({
       url: servicePath.addArticle,
       method: 'post',
-      data: articleForm,
-      withCredentials: true
+      data: articleForm
     }).then(res => {
       if (res.data.success) {
         onSuccess('文章保存成功')

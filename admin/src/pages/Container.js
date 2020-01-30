@@ -2,12 +2,11 @@ import React, { useState } from 'react'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd'
 import '../static/css/container.less'
 import { Route } from 'react-router-dom'
-import {menuConfig, routerConfig} from '../config/menuConfig'
+import { menuConfig, routerConfig } from '../config/menuConfig'
 const { Content, Footer, Sider } = Layout
 const { SubMenu } = Menu
 
-
-const Container = (props) => {
+const Container = props => {
   const [collapsed, setCollapsed] = useState(false)
 
   const onCollapse = collapsed => {
@@ -30,35 +29,32 @@ const Container = (props) => {
           mode="inline"
           onClick={gotoNewPage}
         >
-
-          {
-            menuConfig.map(item => {
-              if (item.subMenu) {
-                return (
-                  <SubMenu
-                    key={item.key}
-                    title={
-                      <span>
-                        <Icon type={item.icon} />
-                        <span>{item.title}</span>
-                      </span>
-                    }
-                  >
-                    {
-                      item.subMenu.map(sub => <Menu.Item key={sub.key}>{sub.title}</Menu.Item>)
-                    }
-                  </SubMenu>
-                )
-              } else {
-                return (
-                  <Menu.Item key={item.key}>
-                    <Icon type={item.icon} />
-                    <span>{item.title}</span>
-                  </Menu.Item>
-                )
-              }
-            })
-          }
+          {menuConfig.map(item => {
+            if (item.subMenu) {
+              return (
+                <SubMenu
+                  key={item.key}
+                  title={
+                    <span>
+                      <Icon type={item.icon} />
+                      <span>{item.title}</span>
+                    </span>
+                  }
+                >
+                  {item.subMenu.map(sub => (
+                    <Menu.Item key={sub.key}>{sub.title}</Menu.Item>
+                  ))}
+                </SubMenu>
+              )
+            } else {
+              return (
+                <Menu.Item key={item.key}>
+                  <Icon type={item.icon} />
+                  <span>{item.title}</span>
+                </Menu.Item>
+              )
+            }
+          })}
         </Menu>
       </Sider>
       <Layout>
@@ -68,13 +64,17 @@ const Container = (props) => {
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
           <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-            {
-              Object.keys(routerConfig).map(key =>{
-                const item = routerConfig[key]
-                console.log(item)
-                return <Route key={key} path={item.path} exact={item.exact} component={item.component} />
-              })
-            }
+            {Object.keys(routerConfig).map(key => {
+              const item = routerConfig[key]
+              return (
+                <Route
+                  key={key}
+                  path={item.path}
+                  exact={item.exact}
+                  component={item.component}
+                />
+              )
+            })}
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>

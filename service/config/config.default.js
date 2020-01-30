@@ -63,6 +63,8 @@ module.exports = appInfo => {
     httpOnly: true,
     encrypt: true, // 加密
     renew: true // 最大时间范围内，刷新，自动增加最大时间
+    // sameSite: 'None',
+    // secure: true
   }
 
   return {
