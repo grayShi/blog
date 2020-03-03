@@ -5,7 +5,7 @@ class IndexController extends Controller {
   async getArticleList() {
     const sql = `SELECT article.id as id,
     article.title as title,
-    article.introduce as introduce,
+    article.introduce_content as introduce,
     date_format(article.add_time,'%Y-%m-%d %H:%i') as addTime,
     article.view_count as viewCount,
     type.type_name as typeName

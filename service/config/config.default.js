@@ -62,10 +62,15 @@ module.exports = appInfo => {
     maxAge: 1000 * 60 * 30,
     httpOnly: true,
     encrypt: true, // 加密
-    renew: true // 最大时间范围内，刷新，自动增加最大时间
     // sameSite: 'None',
-    // secure: true
+    // secure: true,
+    renew: true // 最大时间范围内，刷新，自动增加最大时间
   }
+
+  // config.cookies = {
+  //   sameSite: 'None',
+  //   secure: true
+  // }
 
   return {
     ...config,
