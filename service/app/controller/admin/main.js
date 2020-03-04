@@ -34,7 +34,6 @@ class MainController extends Controller {
     let id
     if (!myArticle.articleId) {
       articleForm.view_count = 0
-
       result = await this.app.mysql.insert('article', articleForm)
       insertSuccess = result.affectedRows === 1
       id = result.insertId

@@ -9,5 +9,9 @@ module.exports = override(
   addLessLoader({
     javascriptEnabled: true,
     modifyVars: { '@primary-color': '#1890ff' }
-  })
+  }),
+  config => {
+    config.devServer = {}
+    return config
+  }
 )

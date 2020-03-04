@@ -62,8 +62,8 @@ module.exports = appInfo => {
     maxAge: 1000 * 60 * 30,
     httpOnly: true,
     encrypt: true, // 加密
-    // sameSite: 'None',
-    // secure: true,
+    sameSite: 'None',
+    secure: true,
     renew: true // 最大时间范围内，刷新，自动增加最大时间
   }
 
