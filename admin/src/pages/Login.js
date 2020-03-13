@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { Card, Input, Icon, Button, Spin, message } from 'antd'
-import '../static/css/login.less'
+import '@style/login.less'
 import servicePath from '../config/apiUrl'
 import axios from 'axios'
 

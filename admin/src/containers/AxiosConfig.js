@@ -5,7 +5,7 @@ import axios from 'axios'
 
 axios.defaults.withCredentials = true
 
-const BodyConfig = props => {
+const AxiosConfig = props => {
   axios.interceptors.request.use(
     function(config) {
       return config
@@ -52,4 +52,4 @@ const BodyConfig = props => {
   return <></>
 }
 
-export default withRouter(BodyConfig)
+export default withRouter(AxiosConfig)

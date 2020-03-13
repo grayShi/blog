@@ -5,16 +5,16 @@ import {
   Redirect,
   Switch
 } from 'react-router-dom'
-import '../static/css/common.less'
-import MyRouter from '../router'
+import '@style/common.less'
+import MyRouter from '../routers'
 import NotFound from '../pages/NotFound'
 
-import BodyConfig from '../component/BodyConfig'
+import AxiosConfig from '../containers/AxiosConfig'
 
 const Main = () => {
   return (
     <Router>
-      <BodyConfig />
+      <AxiosConfig />
       <Switch>
         <Redirect exact from="/" to="/login" />
         {MyRouter.map((item, index) => {

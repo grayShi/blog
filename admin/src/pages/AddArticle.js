@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import marked from 'marked'
-import '../static/css/addArticle.less'
+import '@style/addArticle.less'
 import { Row, Col, Input, Select, Button, DatePicker } from 'antd'
 import axios from 'axios'
 import servicePath from '../config/apiUrl'

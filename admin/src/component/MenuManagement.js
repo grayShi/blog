@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd'
-import '../static/css/container.less'
+import '@style/container.less'
 import { Route } from 'react-router-dom'
 import { menuConfig, routerConfig } from '../config/menuConfig'
 const { Content, Footer, Sider } = Layout
 const { SubMenu } = Menu
 
-const Container = props => {
+const MenuManagement = props => {
   const [collapsed, setCollapsed] = useState(false)
 
   const onCollapse = collapsed => {
@@ -85,4 +85,4 @@ const Container = props => {
   )
 }
 
-export default Container
+export default MenuManagement
