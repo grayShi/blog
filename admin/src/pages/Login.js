@@ -44,7 +44,7 @@ const Login = props => {
   }
 
   useEffect(() => {
-    localStorage.clear('openId')
+    localStorage.removeItem('openId')
   }, [])
 
   return (
